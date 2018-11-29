@@ -50,7 +50,7 @@ namespace SBB_Fahrplan
 
         private string GetChosenLocation(List<string> locations)
         {
-            GUIChooseLocation formChooseLocation = new GUIChooseLocation(locations);
+            GUIChooseLocation formChooseLocation = new GUIChooseLocation(locations); 
             DialogResult dialogResult = formChooseLocation.ShowDialog();
             return formChooseLocation.ChosenLocation;
         }
