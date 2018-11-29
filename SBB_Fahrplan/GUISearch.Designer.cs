@@ -150,7 +150,7 @@
             this.txtFromLocation.Size = new System.Drawing.Size(210, 20);
             this.txtFromLocation.TabIndex = 1;
             this.txtFromLocation.TextChanged += new System.EventHandler(this.TxtFromToLocation_TextChanged);
-            this.txtFromLocation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFromTo_KeyDown);
+            this.txtFromLocation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtFromToLocation_KeyDown);
             // 
             // tabCreateTimeTable
             // 

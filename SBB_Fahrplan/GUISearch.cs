@@ -64,14 +64,6 @@ namespace SBB_Fahrplan
             return transport.GetStations(userInput);
         }
 
-        private void txtFromTo_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                btnSearchConnection.PerformClick();
-            }
-        }
-
         private void TxtFromToLocation_TextChanged(object sender, EventArgs e)
         {
             lblErrorMessage.Visible = false;
@@ -94,12 +86,14 @@ namespace SBB_Fahrplan
 
             bool hasErrors = SearchConnectionErrors(stationsOfFromLocation, stationsOfToLocation);
 
-            /* StationList[0] is alway the most likely location or if you already have a valid location it will be that
-             * this way if you for example have a to location with value "lu" it will automatically be turned into "Luzern"
-             * if you already have "Luzern" it will stay "Luzern" */
              if(!hasErrors)
             {
-                GUIConnections formConnections = new GUIConnections(stationsOfFromLocation.StationList[0].Name, stationsOfToLocation.StationList[0].Name);
+                /* StationList[0] is alway the most likely location or if you already have a valid location it will be that
+                 * this way if you for example have a to location with value "lu" it will automatically be turned into "Luzern"
+                 * if you already have "Luzern" it will stay "Luzern" */
+                string fromLocation = stationsOfFromLocation.StationList[0].Name;
+                string toLocation = stationsOfToLocation.StationList[0].Name;
+                GUIConnections formConnections = new GUIConnections(fromLocation, toLocation);
                 formConnections.ShowDialog();
             }
             
@@ -132,6 +126,14 @@ namespace SBB_Fahrplan
                 hasErrors = true;
             }
             return hasErrors;
+        }
+
+        private void TxtFromToLocation_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSearchConnection.PerformClick();
+            }
         }
     }
 }
