@@ -39,7 +39,7 @@ namespace SBB_Fahrplan
             for(int i = 0; i < (connectionList.Count < 6 ? connectionList.Count : 6); i++)
             {
                 // HIER WEITERMACHEN
-                string[] connectionInfo = { connectionList[i].From.Departure, connectionList[i].To.Departure, connectionList[i].Duration };
+                string[] connectionInfo = { connectionList[i].From.Departure, connectionList[i].To.Arrival, connectionList[i].Duration };
 
                 listviewConnections.Items.Add(new ListViewItem(connectionInfo));
             }
