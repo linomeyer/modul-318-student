@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabCtrl = new System.Windows.Forms.TabControl();
             this.tabSearchConnection = new System.Windows.Forms.TabPage();
             this.btnSearchToLocation = new System.Windows.Forms.Button();
@@ -43,6 +44,8 @@
             this.txtLocation = new System.Windows.Forms.TextBox();
             this.btnCreateTimeTable = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.lblErrorMessage = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tabCtrl.SuspendLayout();
             this.tabSearchConnection.SuspendLayout();
             this.tabCreateTimeTable.SuspendLayout();
@@ -52,15 +55,16 @@
             // 
             this.tabCtrl.Controls.Add(this.tabSearchConnection);
             this.tabCtrl.Controls.Add(this.tabCreateTimeTable);
-            this.tabCtrl.Location = new System.Drawing.Point(-2, 2);
+            this.tabCtrl.Location = new System.Drawing.Point(-2, 1);
             this.tabCtrl.Margin = new System.Windows.Forms.Padding(2);
             this.tabCtrl.Name = "tabCtrl";
             this.tabCtrl.SelectedIndex = 0;
-            this.tabCtrl.Size = new System.Drawing.Size(523, 192);
+            this.tabCtrl.Size = new System.Drawing.Size(580, 193);
             this.tabCtrl.TabIndex = 0;
             // 
             // tabSearchConnection
             // 
+            this.tabSearchConnection.Controls.Add(this.lblErrorMessage);
             this.tabSearchConnection.Controls.Add(this.btnSearchToLocation);
             this.tabSearchConnection.Controls.Add(this.btnSearchFromLocation);
             this.tabSearchConnection.Controls.Add(this.btnSearchConnection);
@@ -72,14 +76,14 @@
             this.tabSearchConnection.Margin = new System.Windows.Forms.Padding(2);
             this.tabSearchConnection.Name = "tabSearchConnection";
             this.tabSearchConnection.Padding = new System.Windows.Forms.Padding(2);
-            this.tabSearchConnection.Size = new System.Drawing.Size(515, 166);
+            this.tabSearchConnection.Size = new System.Drawing.Size(572, 167);
             this.tabSearchConnection.TabIndex = 0;
             this.tabSearchConnection.Text = "Verbindung suchen";
             this.tabSearchConnection.UseVisualStyleBackColor = true;
             // 
             // btnSearchToLocation
             // 
-            this.btnSearchToLocation.Location = new System.Drawing.Point(415, 62);
+            this.btnSearchToLocation.Location = new System.Drawing.Point(490, 62);
             this.btnSearchToLocation.Name = "btnSearchToLocation";
             this.btnSearchToLocation.Size = new System.Drawing.Size(75, 23);
             this.btnSearchToLocation.TabIndex = 5;
@@ -100,7 +104,7 @@
             // btnSearchConnection
             // 
             this.btnSearchConnection.Enabled = false;
-            this.btnSearchConnection.Location = new System.Drawing.Point(362, 116);
+            this.btnSearchConnection.Location = new System.Drawing.Point(437, 112);
             this.btnSearchConnection.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearchConnection.Name = "btnSearchConnection";
             this.btnSearchConnection.Size = new System.Drawing.Size(128, 33);
@@ -112,7 +116,7 @@
             // lblTo
             // 
             this.lblTo.AutoSize = true;
-            this.lblTo.Location = new System.Drawing.Point(278, 18);
+            this.lblTo.Location = new System.Drawing.Point(353, 18);
             this.lblTo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTo.Name = "lblTo";
             this.lblTo.Size = new System.Drawing.Size(27, 13);
@@ -131,7 +135,7 @@
             // 
             // txtToLocation
             // 
-            this.txtToLocation.Location = new System.Drawing.Point(280, 37);
+            this.txtToLocation.Location = new System.Drawing.Point(355, 37);
             this.txtToLocation.Margin = new System.Windows.Forms.Padding(2);
             this.txtToLocation.Name = "txtToLocation";
             this.txtToLocation.Size = new System.Drawing.Size(210, 20);
@@ -201,11 +205,27 @@
             this.btnCreateTimeTable.Text = "Verbindung suchen";
             this.btnCreateTimeTable.UseVisualStyleBackColor = true;
             // 
+            // lblErrorMessage
+            // 
+            this.lblErrorMessage.AutoSize = true;
+            this.lblErrorMessage.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorMessage.Location = new System.Drawing.Point(30, 112);
+            this.lblErrorMessage.Name = "lblErrorMessage";
+            this.lblErrorMessage.Size = new System.Drawing.Size(39, 13);
+            this.lblErrorMessage.TabIndex = 7;
+            this.lblErrorMessage.Text = "Fehler!";
+            this.lblErrorMessage.Visible = false;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // GUISearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(513, 184);
+            this.ClientSize = new System.Drawing.Size(572, 184);
             this.Controls.Add(this.tabCtrl);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GUISearch";
@@ -236,6 +256,8 @@
         private System.Windows.Forms.Button btnSearchToLocation;
         private System.Windows.Forms.Button btnSearchFromLocation;
         private System.Windows.Forms.Button btnSearchLocation;
+        private System.Windows.Forms.Label lblErrorMessage;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 

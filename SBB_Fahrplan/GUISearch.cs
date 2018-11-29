@@ -13,9 +13,12 @@ namespace SBB_Fahrplan
 {
     public partial class GUISearch : Form
     {
+        private Transport transport = new Transport();
+
         public GUISearch()
         {
             InitializeComponent();
+            lblErrorMessage.Text = "";
         }
 
         private void BtnSearchLocation_Click(object sender, EventArgs e)
@@ -50,6 +53,7 @@ namespace SBB_Fahrplan
 
         private string GetChosenLocation(List<string> locations)
         {
+            //opens the form GUIChooseLocation modal
             GUIChooseLocation formChooseLocation = new GUIChooseLocation(locations); 
             DialogResult dialogResult = formChooseLocation.ShowDialog();
             return formChooseLocation.ChosenLocation;
@@ -57,7 +61,6 @@ namespace SBB_Fahrplan
 
         private Stations GetStations(string userInput)
         {
-            Transport transport = new Transport();
             return transport.GetStations(userInput);
         }
 
@@ -69,20 +72,66 @@ namespace SBB_Fahrplan
             }
         }
 
-        private void BtnSearchConnection_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void TxtFromToLocation_TextChanged(object sender, EventArgs e)
         {
-            if(txtFromLocation.Text != "" && txtToLocation.Text != "")
+            lblErrorMessage.Visible = false;
+            lblErrorMessage.Text = "";
+
+            //if to and form location have text enable search button, disable it if not
+            if (txtFromLocation.Text != "" && txtToLocation.Text != "")
             {
                 btnSearchConnection.Enabled = true;
             } else
             {
                 btnSearchConnection.Enabled = false;
             }
+        }
+
+        private void BtnSearchConnection_Click(object sender, EventArgs e)
+        {
+            Stations stationsOfFromLocation = transport.GetStations(txtFromLocation.Text);
+            Stations stationsOfToLocation = transport.GetStations(txtToLocation.Text);
+
+            bool hasErrors = SearchConnectionErrors(stationsOfFromLocation, stationsOfToLocation);
+
+            /* StationList[0] is alway the most likely location or if you already have a valid location it will be that
+             * this way if you for example have a to location with value "lu" it will automatically be turned into "Luzern"
+             * if you already have "Luzern" it will stay "Luzern" */
+             if(!hasErrors)
+            {
+                GUIConnections formConnections = new GUIConnections(stationsOfFromLocation.StationList[0].Name, stationsOfToLocation.StationList[0].Name);
+                formConnections.ShowDialog();
+            }
+            
+        }
+
+        private bool SearchConnectionErrors(Stations stationsOfFromLocation, Stations stationsOfToLocation)
+        {
+            bool hasErrors = false;
+            //if no from location was found show error message
+            if (stationsOfFromLocation.StationList.Count() == 0)
+            {
+                lblErrorMessage.Visible = true;
+                lblErrorMessage.Text = "Es wurde keine Abfahrtstation mit dem Namen " + txtFromLocation.Text + " gefunden";
+                hasErrors = true;
+            }
+            //if no to location was found show error message
+            if (stationsOfToLocation.StationList.Count() == 0)
+            {
+                lblErrorMessage.Visible = true;
+                string toLocationError = "Es wurde keine Ankunftstation mit dem Namen " + txtToLocation.Text + " gefunden";              
+                //if both locations were not found show both error messages on seperate lines
+                if (lblErrorMessage.Text != "")
+                {
+                    lblErrorMessage.Text += Environment.NewLine + toLocationError;
+                }
+                else
+                {
+                    lblErrorMessage.Text = toLocationError;
+                }
+                hasErrors = true;
+            }
+            return hasErrors;
         }
     }
 }
