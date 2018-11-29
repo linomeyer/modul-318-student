@@ -16,7 +16,7 @@ namespace SBB_Fahrplan
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new formSearch());
+            Application.Run(new GUISearch());
         }
     }
 }
