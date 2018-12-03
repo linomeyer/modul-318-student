@@ -76,7 +76,7 @@
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(647, 441);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 34);
             this.btnCancel.TabIndex = 4;
@@ -85,6 +85,8 @@
             // 
             // dataGridConnections
             // 
+            this.dataGridConnections.AllowUserToAddRows = false;
+            this.dataGridConnections.AllowUserToDeleteRows = false;
             this.dataGridConnections.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridConnections.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmnDeparture,
@@ -133,7 +135,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblToLocation);
             this.Controls.Add(this.lblFromLocation);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GUIConnections";
             this.Text = "GUIConnections";
             this.Load += new System.EventHandler(this.FormOnLoad);
