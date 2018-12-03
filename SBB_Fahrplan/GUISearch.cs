@@ -47,11 +47,11 @@ namespace SBB_Fahrplan
                 locations.Add(station.Name);
             }
 
-            txtLocation.Text = GetChosenLocation(locations);
+            txtLocation.Text = SelectLocation(locations);
         }
 
 
-        private string GetChosenLocation(List<string> locations)
+        private string SelectLocation(List<string> locations)
         {
             //opens the form GUIChooseLocation modal
             GUIChooseLocation formChooseLocation = new GUIChooseLocation(locations); 

@@ -18,30 +18,42 @@ namespace SBB_Fahrplan
         private Connections connections;
         private Transport transport = new Transport();
 
+        /// <summary>
+        /// Sets values for member variables with given parameter values.
+        /// </summary>
+        /// <param name="fromLocation"></param>
+        /// <param name="toLocation"></param>
         public GUIConnections(string fromLocation, string toLocation)
         {
             InitializeComponent();
             this.fromLocation = fromLocation;
             this.toLocation = toLocation;
             connections = transport.GetConnections(FromLocation, ToLocation);
-
-            lblFromLocation.Text = fromLocation;
-            lblToLocation.Text = toLocation;
-
-            fillListViewConnections();
         }
 
-        private void fillListViewConnections()
+        private void FormOnLoad(object sender, EventArgs e)
+        {
+            FillDataGridConnections();
+            lblFromLocation.Text = fromLocation;
+            lblToLocation.Text = toLocation;
+        }
+
+        private void FillDataGridConnections()
         {
             List<Connection> connectionList = connections.ConnectionList;
-            //iterate over list to a maximum of 6 elements
+            //Sets amountOfElements to the size of the list or if the list is bigger than 5 to 5
+            int amountOfElements = connectionList.Count < 5 ? connectionList.Count : 5;
 
-            for(int i = 0; i < (connectionList.Count < 6 ? connectionList.Count : 6); i++)
+            for (int i = 0; i < amountOfElements; i++)
             {
-                // HIER WEITERMACHEN
-                string[] connectionInfo = { connectionList[i].From.Departure, connectionList[i].To.Arrival, connectionList[i].Duration };
+                //convert departure to datetime and cut off seconds with substring
+                string departureTime = Convert.ToDateTime(connectionList[i].From.Departure).ToString().Substring(0,16);
+                //adds string "Gleis" to platform for a better looking presentation
+                string platform = "Gleis" + connectionList[i].From.Platform;
+                //cut off days and seconds with substring
+                string duration = connectionList[i].Duration.Substring(3, 5);
 
-                listviewConnections.Items.Add(new ListViewItem(connectionInfo));
+                dataGridConnections.Rows.Add(departureTime , connectionList[i].From.Station.Name, connectionList[i].To.Station.Name, platform, duration);
             }
         }
 

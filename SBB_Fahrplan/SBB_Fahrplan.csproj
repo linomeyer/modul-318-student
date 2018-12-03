@@ -48,7 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConnectionInformation.cs" />
     <Compile Include="GUIChooseLocation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,7 +68,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TimeConverter.cs" />
     <EmbeddedResource Include="GUIChooseLocation.resx">
       <DependentUpon>GUIChooseLocation.cs</DependentUpon>
     </EmbeddedResource>
