@@ -46,6 +46,7 @@
             this.btnCreateTimeTable = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.label2 = new System.Windows.Forms.Label();
             this.tabCtrl.SuspendLayout();
             this.tabSearchConnection.SuspendLayout();
             this.tabCreateTimeTable.SuspendLayout();
@@ -95,8 +96,8 @@
             // 
             // btnSearchToLocation
             // 
-            this.btnSearchToLocation.Location = new System.Drawing.Point(653, 76);
-            this.btnSearchToLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearchToLocation.Location = new System.Drawing.Point(640, 76);
+            this.btnSearchToLocation.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearchToLocation.Name = "btnSearchToLocation";
             this.btnSearchToLocation.Size = new System.Drawing.Size(100, 28);
             this.btnSearchToLocation.TabIndex = 5;
@@ -107,10 +108,10 @@
             // btnSearchFromLocation
             // 
             this.btnSearchFromLocation.Location = new System.Drawing.Point(220, 76);
-            this.btnSearchFromLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearchFromLocation.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearchFromLocation.Name = "btnSearchFromLocation";
             this.btnSearchFromLocation.Size = new System.Drawing.Size(100, 28);
-            this.btnSearchFromLocation.TabIndex = 4;
+            this.btnSearchFromLocation.TabIndex = 2;
             this.btnSearchFromLocation.Text = "Ort suchen";
             this.btnSearchFromLocation.UseVisualStyleBackColor = true;
             this.btnSearchFromLocation.Click += new System.EventHandler(this.BtnSearchFromLocation_Click);
@@ -118,7 +119,7 @@
             // btnSearchConnection
             // 
             this.btnSearchConnection.Enabled = false;
-            this.btnSearchConnection.Location = new System.Drawing.Point(583, 138);
+            this.btnSearchConnection.Location = new System.Drawing.Point(569, 138);
             this.btnSearchConnection.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearchConnection.Name = "btnSearchConnection";
             this.btnSearchConnection.Size = new System.Drawing.Size(171, 41);
@@ -130,16 +131,16 @@
             // lblTo
             // 
             this.lblTo.AutoSize = true;
-            this.lblTo.Location = new System.Drawing.Point(471, 22);
+            this.lblTo.Location = new System.Drawing.Point(458, 27);
             this.lblTo.Name = "lblTo";
             this.lblTo.Size = new System.Drawing.Size(35, 17);
-            this.lblTo.TabIndex = 2;
+            this.lblTo.TabIndex = 3;
             this.lblTo.Text = "&Bis: ";
             // 
             // lblFrom
             // 
             this.lblFrom.AutoSize = true;
-            this.lblFrom.Location = new System.Drawing.Point(40, 22);
+            this.lblFrom.Location = new System.Drawing.Point(37, 27);
             this.lblFrom.Name = "lblFrom";
             this.lblFrom.Size = new System.Drawing.Size(41, 17);
             this.lblFrom.TabIndex = 0;
@@ -147,12 +148,13 @@
             // 
             // txtToLocation
             // 
-            this.txtToLocation.Location = new System.Drawing.Point(473, 46);
+            this.txtToLocation.Location = new System.Drawing.Point(461, 46);
             this.txtToLocation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtToLocation.Name = "txtToLocation";
             this.txtToLocation.Size = new System.Drawing.Size(279, 22);
-            this.txtToLocation.TabIndex = 3;
+            this.txtToLocation.TabIndex = 4;
             this.txtToLocation.TextChanged += new System.EventHandler(this.TxtFromToLocation_TextChanged);
+            this.txtToLocation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtFromToLocation_KeyDown);
             // 
             // txtFromLocation
             // 
@@ -166,6 +168,7 @@
             // 
             // tabCreateTimeTable
             // 
+            this.tabCreateTimeTable.Controls.Add(this.label2);
             this.tabCreateTimeTable.Controls.Add(this.btnSearchLocation);
             this.tabCreateTimeTable.Controls.Add(this.label1);
             this.tabCreateTimeTable.Controls.Add(this.txtLocation);
@@ -181,8 +184,8 @@
             // 
             // btnSearchLocation
             // 
-            this.btnSearchLocation.Location = new System.Drawing.Point(207, 74);
-            this.btnSearchLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearchLocation.Location = new System.Drawing.Point(219, 74);
+            this.btnSearchLocation.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearchLocation.Name = "btnSearchLocation";
             this.btnSearchLocation.Size = new System.Drawing.Size(100, 28);
             this.btnSearchLocation.TabIndex = 8;
@@ -193,15 +196,15 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 20);
+            this.label1.Location = new System.Drawing.Point(37, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 17);
+            this.label1.Size = new System.Drawing.Size(36, 17);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Ort";
+            this.label1.Text = "Ort: ";
             // 
             // txtLocation
             // 
-            this.txtLocation.Location = new System.Drawing.Point(27, 43);
+            this.txtLocation.Location = new System.Drawing.Point(40, 46);
             this.txtLocation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Size = new System.Drawing.Size(279, 22);
@@ -209,12 +212,12 @@
             // 
             // btnCreateTimeTable
             // 
-            this.btnCreateTimeTable.Location = new System.Drawing.Point(371, 39);
+            this.btnCreateTimeTable.Location = new System.Drawing.Point(461, 46);
             this.btnCreateTimeTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreateTimeTable.Name = "btnCreateTimeTable";
             this.btnCreateTimeTable.Size = new System.Drawing.Size(277, 31);
             this.btnCreateTimeTable.TabIndex = 5;
-            this.btnCreateTimeTable.Text = "Verbindung suchen";
+            this.btnCreateTimeTable.Text = "Fahrplan erstellen";
             this.btnCreateTimeTable.UseVisualStyleBackColor = true;
             // 
             // contextMenuStrip1
@@ -222,6 +225,18 @@
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(40, 138);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(105, 17);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Fehlermeldung!";
+            this.label2.Visible = false;
             // 
             // GUISearch
             // 
@@ -260,6 +275,7 @@
         private System.Windows.Forms.Button btnSearchLocation;
         private System.Windows.Forms.Label lblErrorMessage;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

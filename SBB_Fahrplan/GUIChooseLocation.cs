@@ -37,5 +37,13 @@ namespace SBB_Fahrplan
         {
             btnChooseLocation.PerformClick();
         }
+
+        private void lixtBoxLocations_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnChooseLocation.PerformClick();
+            }
+        }
     }
 }

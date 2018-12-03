@@ -34,9 +34,10 @@
             // 
             // btnChooseLocation
             // 
-            this.btnChooseLocation.Location = new System.Drawing.Point(180, 321);
+            this.btnChooseLocation.Location = new System.Drawing.Point(240, 395);
+            this.btnChooseLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnChooseLocation.Name = "btnChooseLocation";
-            this.btnChooseLocation.Size = new System.Drawing.Size(75, 33);
+            this.btnChooseLocation.Size = new System.Drawing.Size(100, 41);
             this.btnChooseLocation.TabIndex = 2;
             this.btnChooseLocation.Text = "Ort wählen";
             this.btnChooseLocation.UseVisualStyleBackColor = true;
@@ -45,19 +46,23 @@
             // listBoxLocations
             // 
             this.listBoxLocations.FormattingEnabled = true;
-            this.listBoxLocations.Location = new System.Drawing.Point(12, 12);
+            this.listBoxLocations.ItemHeight = 16;
+            this.listBoxLocations.Location = new System.Drawing.Point(16, 15);
+            this.listBoxLocations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listBoxLocations.Name = "listBoxLocations";
-            this.listBoxLocations.Size = new System.Drawing.Size(243, 303);
+            this.listBoxLocations.Size = new System.Drawing.Size(323, 372);
             this.listBoxLocations.TabIndex = 3;
             this.listBoxLocations.DoubleClick += new System.EventHandler(this.ListBoxLocations_DoubleClick);
+            this.listBoxLocations.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lixtBoxLocations_KeyDown);
             // 
             // GUIChooseLocation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(268, 363);
+            this.ClientSize = new System.Drawing.Size(357, 447);
             this.Controls.Add(this.listBoxLocations);
             this.Controls.Add(this.btnChooseLocation);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "GUIChooseLocation";
             this.Text = "Ort wählen";
             this.ResumeLayout(false);

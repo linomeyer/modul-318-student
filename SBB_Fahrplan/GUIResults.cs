@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace SBB_Fahrplan
 {
-    public partial class GUIConnections : Form
+    public partial class GUIResults : Form
     {
         private string fromLocation;
         private string toLocation;
@@ -23,19 +23,23 @@ namespace SBB_Fahrplan
         /// </summary>
         /// <param name="fromLocation"></param>
         /// <param name="toLocation"></param>
-        public GUIConnections(string fromLocation, string toLocation)
+        public GUIResults(string fromLocation, string toLocation)
         {
             InitializeComponent();
             this.fromLocation = fromLocation;
             this.toLocation = toLocation;
             connections = transport.GetConnections(FromLocation, ToLocation);
+            LoadFormInConnectionLayout();
         }
 
-        private void FormOnLoad(object sender, EventArgs e)
+        private void LoadFormInConnectionLayout()
         {
+            //fill data grid in connection layout
             FillDataGridConnections();
-            lblFromLocation.Text = fromLocation;
-            lblToLocation.Text = toLocation;
+
+            lblFromLocation.Visible = true;
+            lblToLocation.Visible = true;
+            lblTimeTableLocation.Visible = false;
         }
 
         private void FillDataGridConnections()

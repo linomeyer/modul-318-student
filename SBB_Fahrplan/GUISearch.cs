@@ -69,7 +69,7 @@ namespace SBB_Fahrplan
             lblErrorMessage.Visible = false;
             lblErrorMessage.Text = "";
 
-            //if to and form location have text enable search button, disable it if not
+            //if to and from location have text enable search button, disable it if not
             if (txtFromLocation.Text != "" && txtToLocation.Text != "")
             {
                 btnSearchConnection.Enabled = true;
@@ -93,7 +93,7 @@ namespace SBB_Fahrplan
                  * if you already have "Luzern" it will stay "Luzern" */
                 string fromLocation = stationsOfFromLocation.StationList[0].Name;
                 string toLocation = stationsOfToLocation.StationList[0].Name;
-                GUIConnections formConnections = new GUIConnections(fromLocation, toLocation);
+                GUIResults formConnections = new GUIResults(fromLocation, toLocation);
                 formConnections.ShowDialog();
             }
             
