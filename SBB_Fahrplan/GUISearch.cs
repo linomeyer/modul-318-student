@@ -18,12 +18,13 @@ namespace SBB_Fahrplan
         public GUISearch()
         {
             InitializeComponent();
+            //is set to empty here to still see the label in gui designer
             lblErrorMessage.Text = "";
         }
 
-        private void BtnSearchLocation_Click(object sender, EventArgs e)
+        private void BtnSearchTimetableLocation_Click(object sender, EventArgs e)
         {
-            SearchLocation(txtLocation);
+            SearchLocation(txtTimetableLocation);
         }
 
         private void BtnSearchToLocation_Click(object sender, EventArgs e)
@@ -96,7 +97,6 @@ namespace SBB_Fahrplan
                 GUIResults formConnections = new GUIResults(fromLocation, toLocation);
                 formConnections.ShowDialog();
             }
-            
         }
 
         private bool SearchConnectionErrors(Stations stationsOfFromLocation, Stations stationsOfToLocation)
@@ -126,6 +126,41 @@ namespace SBB_Fahrplan
                 hasErrors = true;
             }
             return hasErrors;
+        }
+
+        private void BtnCreateTimetable_Click(object sender, EventArgs e)
+        {
+            Stations stationsOfTimetableLocation = transport.GetStations(txtTimetableLocation.Text);
+            bool hasErrors = SearchTimetableErrors(stationsOfTimetableLocation);
+
+            if(!hasErrors)
+            {
+                string timetableLocation = stationsOfTimetableLocation.StationList[0].Name;
+                GUIResults formTimetable = new GUIResults(timetableLocation);
+                formTimetable.ShowDialog();
+            }
+        }
+
+        private bool SearchTimetableErrors(Stations stationsOfTimetableLocation)
+        {
+            if(stationsOfTimetableLocation.StationList.Count() == 0)
+            {
+                lblTimetableErrors.Visible = true;
+                lblTimetableErrors.Text = "Es wurde keine Station mit dem Namen " + txtTimetableLocation.Text + " gefunden.";
+                return true;
+            }
+            return false;
+        }
+        private void TxtTimetableLocation_TextChanged(object sender, EventArgs e)
+        {
+            lblTimetableErrors.Visible = false;
+            if(txtTimetableLocation.Text != "")
+            {
+                btnCreateTimeTable.Enabled = true;
+            } else
+            {
+                btnCreateTimeTable.Enabled = false;
+            }
         }
 
         private void TxtFromToLocation_KeyDown(object sender, KeyEventArgs e)

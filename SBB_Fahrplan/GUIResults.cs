@@ -13,33 +13,65 @@ namespace SBB_Fahrplan
 {
     public partial class GUIResults : Form
     {
-        private string fromLocation;
-        private string toLocation;
         private Connections connections;
+        private StationBoardRoot stationBoardRoot;
         private Transport transport = new Transport();
 
         /// <summary>
-        /// Sets values for member variables with given parameter values.
+        /// Used to open gui in connection layout and sets member variables with given parameter values
         /// </summary>
         /// <param name="fromLocation"></param>
         /// <param name="toLocation"></param>
         public GUIResults(string fromLocation, string toLocation)
         {
             InitializeComponent();
-            this.fromLocation = fromLocation;
-            this.toLocation = toLocation;
-            connections = transport.GetConnections(FromLocation, ToLocation);
-            LoadFormInConnectionLayout();
+            stationBoardRoot = null;
+            connections = transport.GetConnections(fromLocation, toLocation);
+            LoadFormInConnectionLayout(fromLocation, toLocation);
         }
 
-        private void LoadFormInConnectionLayout()
+        /// <summary>
+        /// Used to open gui in timetable layout and sets member variables with given parameter values
+        /// </summary>
+        /// <param name="timetableLocation"></param>
+        public GUIResults(string timetableLocation)
         {
-            //fill data grid in connection layout
-            FillDataGridConnections();
+            InitializeComponent();
+            stationBoardRoot = transport.GetStationBoard(timetableLocation, transport.GetStations(timetableLocation).StationList[0].Id);
+            connections = null;
+            LoadFormInTimetableLayout(timetableLocation);
+        }
 
+        private void LoadFormInTimetableLayout(string timetableLocation)
+        {
+            lblFromLocation.Visible = false;
+            lblToLocation.Visible = false;
+            lblTimeTableLocation.Visible = true;
+            lblTimeTableLocation.Text = timetableLocation;
+
+            //fill data grid in timetable layout
+            FillDataGridTimetable();
+        }
+
+        private void FillDataGridTimetable()
+        {
+            dataGridTimetable.Visible = true;
+            foreach (StationBoard stationBoard in stationBoardRoot.Entries)
+            {
+                dataGridTimetable.Rows.Add(stationBoard.Stop.Departure, stationBoardRoot.Station.Name, stationBoard.To, stationBoard.Operator, stationBoard.Name);
+            }
+        }
+
+        private void LoadFormInConnectionLayout(string fromLocation, string toLocation)
+        {
             lblFromLocation.Visible = true;
             lblToLocation.Visible = true;
             lblTimeTableLocation.Visible = false;
+            lblFromLocation.Text = fromLocation;
+            lblToLocation.Text = toLocation;
+
+            //fill data grid in connection layout
+            FillDataGridConnections();
         }
 
         private void FillDataGridConnections()
@@ -47,6 +79,7 @@ namespace SBB_Fahrplan
             List<Connection> connectionList = connections.ConnectionList;
             //Sets amountOfElements to the size of the list or if the list is bigger than 5 to 5
             int amountOfElements = connectionList.Count < 5 ? connectionList.Count : 5;
+            dataGridConnections.Visible = true;
 
             for (int i = 0; i < amountOfElements; i++)
             {
@@ -61,19 +94,18 @@ namespace SBB_Fahrplan
             }
         }
 
-        public string FromLocation
-        {
-            get { return fromLocation; }
-        }
-
-        public string ToLocation
-        {
-            get { return toLocation; } 
-        }
-
         public Connections Connections
         { 
             get { return connections; }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            dataGridConnections.Visible = false;
+            dataGridConnections.Rows.Clear();
+            dataGridTimetable.Visible = false;
+            dataGridTimetable.Rows.Clear();
+            this.Close();
         }
     }
 }

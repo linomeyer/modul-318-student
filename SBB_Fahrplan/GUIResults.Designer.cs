@@ -39,7 +39,14 @@
             this.clmnPlatform = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmnDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblTimeTableLocation = new System.Windows.Forms.Label();
+            this.dataGridTimetable = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmnTrain = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmnLin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridConnections)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridTimetable)).BeginInit();
             this.SuspendLayout();
             // 
             // lblFromLocation
@@ -78,14 +85,14 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(765, 320);
+            this.btnCancel.Location = new System.Drawing.Point(765, 486);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(120, 34);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Abbrechen";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // dataGridConnections
             // 
@@ -101,8 +108,9 @@
             this.dataGridConnections.Location = new System.Drawing.Point(27, 128);
             this.dataGridConnections.Name = "dataGridConnections";
             this.dataGridConnections.RowTemplate.Height = 24;
-            this.dataGridConnections.Size = new System.Drawing.Size(858, 185);
+            this.dataGridConnections.Size = new System.Drawing.Size(858, 351);
             this.dataGridConnections.TabIndex = 5;
+            this.dataGridConnections.Visible = false;
             // 
             // clmnDeparture
             // 
@@ -136,7 +144,7 @@
             // 
             this.lblTimeTableLocation.AutoSize = true;
             this.lblTimeTableLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.lblTimeTableLocation.Location = new System.Drawing.Point(303, 53);
+            this.lblTimeTableLocation.Location = new System.Drawing.Point(27, 53);
             this.lblTimeTableLocation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTimeTableLocation.Name = "lblTimeTableLocation";
             this.lblTimeTableLocation.Size = new System.Drawing.Size(42, 25);
@@ -144,11 +152,60 @@
             this.lblTimeTableLocation.Text = "Ort";
             this.lblTimeTableLocation.Visible = false;
             // 
-            // GUIConnections
+            // dataGridTimetable
+            // 
+            this.dataGridTimetable.AllowUserToAddRows = false;
+            this.dataGridTimetable.AllowUserToDeleteRows = false;
+            this.dataGridTimetable.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridTimetable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.clmnTrain,
+            this.clmnLin});
+            this.dataGridTimetable.Location = new System.Drawing.Point(27, 128);
+            this.dataGridTimetable.Name = "dataGridTimetable";
+            this.dataGridTimetable.RowTemplate.Height = 24;
+            this.dataGridTimetable.Size = new System.Drawing.Size(858, 351);
+            this.dataGridTimetable.TabIndex = 7;
+            this.dataGridTimetable.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Abfahrt";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn1.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Von";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Nach";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 150;
+            // 
+            // clmnTrain
+            // 
+            this.clmnTrain.HeaderText = "Bahn";
+            this.clmnTrain.Name = "clmnTrain";
+            this.clmnTrain.Width = 70;
+            // 
+            // clmnLin
+            // 
+            this.clmnLin.HeaderText = "Linie";
+            this.clmnLin.Name = "clmnLin";
+            // 
+            // GUIResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(901, 364);
+            this.ClientSize = new System.Drawing.Size(901, 533);
+            this.Controls.Add(this.dataGridTimetable);
             this.Controls.Add(this.lblTimeTableLocation);
             this.Controls.Add(this.dataGridConnections);
             this.Controls.Add(this.btnCancel);
@@ -156,9 +213,10 @@
             this.Controls.Add(this.lblToLocation);
             this.Controls.Add(this.lblFromLocation);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "GUIConnections";
+            this.Name = "GUIResults";
             this.Text = "GUIConnections";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridConnections)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridTimetable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,5 +235,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmnPlatform;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmnDuration;
         private System.Windows.Forms.Label lblTimeTableLocation;
+        private System.Windows.Forms.DataGridView dataGridTimetable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmnTrain;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmnLin;
     }
 }

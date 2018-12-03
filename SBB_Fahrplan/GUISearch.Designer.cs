@@ -40,13 +40,13 @@
             this.txtToLocation = new System.Windows.Forms.TextBox();
             this.txtFromLocation = new System.Windows.Forms.TextBox();
             this.tabCreateTimeTable = new System.Windows.Forms.TabPage();
-            this.btnSearchLocation = new System.Windows.Forms.Button();
+            this.lblTimetableErrors = new System.Windows.Forms.Label();
+            this.btnSearchTimetableLocation = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtLocation = new System.Windows.Forms.TextBox();
+            this.txtTimetableLocation = new System.Windows.Forms.TextBox();
             this.btnCreateTimeTable = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.label2 = new System.Windows.Forms.Label();
             this.tabCtrl.SuspendLayout();
             this.tabSearchConnection.SuspendLayout();
             this.tabCreateTimeTable.SuspendLayout();
@@ -168,10 +168,10 @@
             // 
             // tabCreateTimeTable
             // 
-            this.tabCreateTimeTable.Controls.Add(this.label2);
-            this.tabCreateTimeTable.Controls.Add(this.btnSearchLocation);
+            this.tabCreateTimeTable.Controls.Add(this.lblTimetableErrors);
+            this.tabCreateTimeTable.Controls.Add(this.btnSearchTimetableLocation);
             this.tabCreateTimeTable.Controls.Add(this.label1);
-            this.tabCreateTimeTable.Controls.Add(this.txtLocation);
+            this.tabCreateTimeTable.Controls.Add(this.txtTimetableLocation);
             this.tabCreateTimeTable.Controls.Add(this.btnCreateTimeTable);
             this.tabCreateTimeTable.Location = new System.Drawing.Point(4, 25);
             this.tabCreateTimeTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -182,16 +182,28 @@
             this.tabCreateTimeTable.Text = "Fahrplan erstellen";
             this.tabCreateTimeTable.UseVisualStyleBackColor = true;
             // 
-            // btnSearchLocation
+            // lblTimetableErrors
             // 
-            this.btnSearchLocation.Location = new System.Drawing.Point(219, 74);
-            this.btnSearchLocation.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSearchLocation.Name = "btnSearchLocation";
-            this.btnSearchLocation.Size = new System.Drawing.Size(100, 28);
-            this.btnSearchLocation.TabIndex = 8;
-            this.btnSearchLocation.Text = "Ort suchen";
-            this.btnSearchLocation.UseVisualStyleBackColor = true;
-            this.btnSearchLocation.Click += new System.EventHandler(this.BtnSearchLocation_Click);
+            this.lblTimetableErrors.AutoSize = true;
+            this.lblTimetableErrors.ForeColor = System.Drawing.Color.Red;
+            this.lblTimetableErrors.Location = new System.Drawing.Point(40, 138);
+            this.lblTimetableErrors.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTimetableErrors.Name = "lblTimetableErrors";
+            this.lblTimetableErrors.Size = new System.Drawing.Size(105, 17);
+            this.lblTimetableErrors.TabIndex = 9;
+            this.lblTimetableErrors.Text = "Fehlermeldung!";
+            this.lblTimetableErrors.Visible = false;
+            // 
+            // btnSearchTimetableLocation
+            // 
+            this.btnSearchTimetableLocation.Location = new System.Drawing.Point(219, 74);
+            this.btnSearchTimetableLocation.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSearchTimetableLocation.Name = "btnSearchTimetableLocation";
+            this.btnSearchTimetableLocation.Size = new System.Drawing.Size(100, 28);
+            this.btnSearchTimetableLocation.TabIndex = 8;
+            this.btnSearchTimetableLocation.Text = "Ort suchen";
+            this.btnSearchTimetableLocation.UseVisualStyleBackColor = true;
+            this.btnSearchTimetableLocation.Click += new System.EventHandler(this.BtnSearchTimetableLocation_Click);
             // 
             // label1
             // 
@@ -202,41 +214,32 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Ort: ";
             // 
-            // txtLocation
+            // txtTimetableLocation
             // 
-            this.txtLocation.Location = new System.Drawing.Point(40, 46);
-            this.txtLocation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtLocation.Name = "txtLocation";
-            this.txtLocation.Size = new System.Drawing.Size(279, 22);
-            this.txtLocation.TabIndex = 6;
+            this.txtTimetableLocation.Location = new System.Drawing.Point(40, 46);
+            this.txtTimetableLocation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTimetableLocation.Name = "txtTimetableLocation";
+            this.txtTimetableLocation.Size = new System.Drawing.Size(279, 22);
+            this.txtTimetableLocation.TabIndex = 6;
+            this.txtTimetableLocation.TextChanged += new System.EventHandler(this.TxtTimetableLocation_TextChanged);
             // 
             // btnCreateTimeTable
             // 
-            this.btnCreateTimeTable.Location = new System.Drawing.Point(461, 46);
+            this.btnCreateTimeTable.Enabled = false;
+            this.btnCreateTimeTable.Location = new System.Drawing.Point(462, 42);
             this.btnCreateTimeTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreateTimeTable.Name = "btnCreateTimeTable";
             this.btnCreateTimeTable.Size = new System.Drawing.Size(277, 31);
             this.btnCreateTimeTable.TabIndex = 5;
             this.btnCreateTimeTable.Text = "Fahrplan erstellen";
             this.btnCreateTimeTable.UseVisualStyleBackColor = true;
+            this.btnCreateTimeTable.Click += new System.EventHandler(this.BtnCreateTimetable_Click);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(40, 138);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 17);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Fehlermeldung!";
-            this.label2.Visible = false;
             // 
             // GUISearch
             // 
@@ -268,14 +271,14 @@
         private System.Windows.Forms.TextBox txtFromLocation;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtLocation;
+        private System.Windows.Forms.TextBox txtTimetableLocation;
         private System.Windows.Forms.Button btnCreateTimeTable;
         private System.Windows.Forms.Button btnSearchToLocation;
         private System.Windows.Forms.Button btnSearchFromLocation;
-        private System.Windows.Forms.Button btnSearchLocation;
+        private System.Windows.Forms.Button btnSearchTimetableLocation;
         private System.Windows.Forms.Label lblErrorMessage;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTimetableErrors;
     }
 }
 
