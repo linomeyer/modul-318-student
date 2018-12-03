@@ -20,6 +20,9 @@ namespace SBB_Fahrplan
             InitializeComponent();
             //is set to empty here to still see the label in gui designer
             lblErrorMessage.Text = "";
+            //set dateTimePicker to a custom format
+            dateTimePicker.CustomFormat = "dd/MM/yyyy HH:mm";
+            dateTimePicker.Value = DateTime.Now;
         }
 
         private void BtnSearchTimetableLocation_Click(object sender, EventArgs e)
@@ -94,7 +97,7 @@ namespace SBB_Fahrplan
                  * if you already have "Luzern" it will stay "Luzern" */
                 string fromLocation = stationsOfFromLocation.StationList[0].Name;
                 string toLocation = stationsOfToLocation.StationList[0].Name;
-                GUIResults formConnections = new GUIResults(fromLocation, toLocation);
+                GUIResults formConnections = new GUIResults(fromLocation, toLocation, dateTimePicker.Text);
                 formConnections.ShowDialog();
             }
         }
@@ -168,6 +171,14 @@ namespace SBB_Fahrplan
             if (e.KeyCode == Keys.Enter)
             {
                 btnSearchConnection.PerformClick();
+            }
+        }
+
+        private void TxtTimetableLocation_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnCreateTimeTable.PerformClick();
             }
         }
     }

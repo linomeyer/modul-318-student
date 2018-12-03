@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUISearch));
             this.tabCtrl = new System.Windows.Forms.TabControl();
             this.tabSearchConnection = new System.Windows.Forms.TabPage();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.lblErrorMessage = new System.Windows.Forms.Label();
             this.btnSearchToLocation = new System.Windows.Forms.Button();
             this.btnSearchFromLocation = new System.Windows.Forms.Button();
@@ -65,6 +67,7 @@
             // 
             // tabSearchConnection
             // 
+            this.tabSearchConnection.Controls.Add(this.dateTimePicker);
             this.tabSearchConnection.Controls.Add(this.lblErrorMessage);
             this.tabSearchConnection.Controls.Add(this.btnSearchToLocation);
             this.tabSearchConnection.Controls.Add(this.btnSearchFromLocation);
@@ -82,11 +85,20 @@
             this.tabSearchConnection.Text = "Verbindung suchen";
             this.tabSearchConnection.UseVisualStyleBackColor = true;
             // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker.Location = new System.Drawing.Point(516, 122);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(224, 22);
+            this.dateTimePicker.TabIndex = 8;
+            this.dateTimePicker.Value = new System.DateTime(2018, 12, 3, 15, 49, 23, 0);
+            // 
             // lblErrorMessage
             // 
             this.lblErrorMessage.AutoSize = true;
             this.lblErrorMessage.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorMessage.Location = new System.Drawing.Point(40, 138);
+            this.lblErrorMessage.Location = new System.Drawing.Point(40, 164);
             this.lblErrorMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblErrorMessage.Name = "lblErrorMessage";
             this.lblErrorMessage.Size = new System.Drawing.Size(105, 17);
@@ -119,7 +131,7 @@
             // btnSearchConnection
             // 
             this.btnSearchConnection.Enabled = false;
-            this.btnSearchConnection.Location = new System.Drawing.Point(569, 138);
+            this.btnSearchConnection.Location = new System.Drawing.Point(569, 164);
             this.btnSearchConnection.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearchConnection.Name = "btnSearchConnection";
             this.btnSearchConnection.Size = new System.Drawing.Size(171, 41);
@@ -200,7 +212,7 @@
             this.btnSearchTimetableLocation.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearchTimetableLocation.Name = "btnSearchTimetableLocation";
             this.btnSearchTimetableLocation.Size = new System.Drawing.Size(100, 28);
-            this.btnSearchTimetableLocation.TabIndex = 8;
+            this.btnSearchTimetableLocation.TabIndex = 2;
             this.btnSearchTimetableLocation.Text = "Ort suchen";
             this.btnSearchTimetableLocation.UseVisualStyleBackColor = true;
             this.btnSearchTimetableLocation.Click += new System.EventHandler(this.BtnSearchTimetableLocation_Click);
@@ -211,7 +223,7 @@
             this.label1.Location = new System.Drawing.Point(37, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 17);
-            this.label1.TabIndex = 7;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Ort: ";
             // 
             // txtTimetableLocation
@@ -220,8 +232,9 @@
             this.txtTimetableLocation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTimetableLocation.Name = "txtTimetableLocation";
             this.txtTimetableLocation.Size = new System.Drawing.Size(279, 22);
-            this.txtTimetableLocation.TabIndex = 6;
+            this.txtTimetableLocation.TabIndex = 1;
             this.txtTimetableLocation.TextChanged += new System.EventHandler(this.TxtTimetableLocation_TextChanged);
+            this.txtTimetableLocation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtTimetableLocation_KeyDown);
             // 
             // btnCreateTimeTable
             // 
@@ -230,7 +243,7 @@
             this.btnCreateTimeTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreateTimeTable.Name = "btnCreateTimeTable";
             this.btnCreateTimeTable.Size = new System.Drawing.Size(277, 31);
-            this.btnCreateTimeTable.TabIndex = 5;
+            this.btnCreateTimeTable.TabIndex = 3;
             this.btnCreateTimeTable.Text = "Fahrplan erstellen";
             this.btnCreateTimeTable.UseVisualStyleBackColor = true;
             this.btnCreateTimeTable.Click += new System.EventHandler(this.BtnCreateTimetable_Click);
@@ -245,8 +258,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(763, 226);
+            this.ClientSize = new System.Drawing.Size(763, 245);
             this.Controls.Add(this.tabCtrl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GUISearch";
             this.Text = "SBB-Fahrplan";
@@ -279,6 +293,7 @@
         private System.Windows.Forms.Label lblErrorMessage;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label lblTimetableErrors;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
     }
 }
 

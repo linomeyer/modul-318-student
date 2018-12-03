@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUIResults));
             this.lblFromLocation = new System.Windows.Forms.Label();
             this.lblToLocation = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -212,9 +213,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblToLocation);
             this.Controls.Add(this.lblFromLocation);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GUIResults";
-            this.Text = "GUIConnections";
+            this.Text = "Verbindungen";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridConnections)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTimetable)).EndInit();
             this.ResumeLayout(false);

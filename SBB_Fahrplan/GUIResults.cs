@@ -22,11 +22,14 @@ namespace SBB_Fahrplan
         /// </summary>
         /// <param name="fromLocation"></param>
         /// <param name="toLocation"></param>
-        public GUIResults(string fromLocation, string toLocation)
+        public GUIResults(string fromLocation, string toLocation, string datetime)
         {
             InitializeComponent();
             stationBoardRoot = null;
-            connections = transport.GetConnections(fromLocation, toLocation);
+            //split datetime to date and time
+            string date = datetime.Substring(0, 10);
+            string time = datetime.Substring(10, 6);
+            connections = transport.GetConnections(fromLocation, toLocation, date, time);
             LoadFormInConnectionLayout(fromLocation, toLocation);
         }
 
@@ -85,12 +88,10 @@ namespace SBB_Fahrplan
             {
                 //convert departure to datetime and cut off seconds with substring
                 string departureTime = Convert.ToDateTime(connectionList[i].From.Departure).ToString().Substring(0,16);
-                //adds string "Gleis" to platform for a better looking presentation
-                string platform = "Gleis" + connectionList[i].From.Platform;
                 //cut off days and seconds with substring
                 string duration = connectionList[i].Duration.Substring(3, 5);
 
-                dataGridConnections.Rows.Add(departureTime , connectionList[i].From.Station.Name, connectionList[i].To.Station.Name, platform, duration);
+                dataGridConnections.Rows.Add(departureTime , connectionList[i].From.Station.Name, connectionList[i].To.Station.Name, connectionList[i].From.Platform, duration);
             }
         }
 

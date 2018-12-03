@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUIChooseLocation));
             this.btnChooseLocation = new System.Windows.Forms.Button();
             this.listBoxLocations = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
@@ -35,7 +36,7 @@
             // btnChooseLocation
             // 
             this.btnChooseLocation.Location = new System.Drawing.Point(240, 395);
-            this.btnChooseLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChooseLocation.Margin = new System.Windows.Forms.Padding(4);
             this.btnChooseLocation.Name = "btnChooseLocation";
             this.btnChooseLocation.Size = new System.Drawing.Size(100, 41);
             this.btnChooseLocation.TabIndex = 2;
@@ -48,7 +49,7 @@
             this.listBoxLocations.FormattingEnabled = true;
             this.listBoxLocations.ItemHeight = 16;
             this.listBoxLocations.Location = new System.Drawing.Point(16, 15);
-            this.listBoxLocations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxLocations.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxLocations.Name = "listBoxLocations";
             this.listBoxLocations.Size = new System.Drawing.Size(323, 372);
             this.listBoxLocations.TabIndex = 3;
@@ -62,7 +63,8 @@
             this.ClientSize = new System.Drawing.Size(357, 447);
             this.Controls.Add(this.listBoxLocations);
             this.Controls.Add(this.btnChooseLocation);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GUIChooseLocation";
             this.Text = "Ort wählen";
             this.ResumeLayout(false);

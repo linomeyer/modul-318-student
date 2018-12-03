@@ -40,9 +40,18 @@ namespace SwissTransport
             return null;
         }
 
-        public Connections GetConnections(string fromStation, string toStattion)
+        /// <summary>
+        /// added parameters date and time to given implementation, if datetime is not edited the present time is used.
+        /// API allows date and time parameters.
+        /// </summary>
+        /// <param name="fromStation"></param>
+        /// <param name="toStattion"></param>
+        /// <param name="date"></param>
+        /// <param name="time"></param>
+        /// <returns></returns>
+        public Connections GetConnections(string fromStation, string toStattion, string date, string time)
         {
-            var request = CreateWebRequest("http://transport.opendata.ch/v1/connections?from=" + fromStation + "&to=" + toStattion);
+            var request = CreateWebRequest("http://transport.opendata.ch/v1/connections?from=" + fromStation + "&to=" + toStattion + "&date=" + date + "&time=" + time);
             var response = request.GetResponse();
             var responseStream = response.GetResponseStream();
 
