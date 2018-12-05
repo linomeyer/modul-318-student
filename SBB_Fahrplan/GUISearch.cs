@@ -172,7 +172,7 @@ namespace SBB_Fahrplan
             }
             catch (WebException)
             {
-                MessageBox.Show("Von der SBB Schnittstelle wurden keine Koordinaten zu diesem Ort gefunden.");
+                MessageBox.Show("Sie benötigen eine funktionierende Internetverbindung.");
             }
         }
 
