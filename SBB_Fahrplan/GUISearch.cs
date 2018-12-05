@@ -87,6 +87,7 @@ namespace SBB_Fahrplan
 
         private void BtnSearchConnection_Click(object sender, EventArgs e)
         {
+            // catches WebException if no connection to the internet is available
             try
             {
                 Stations stationsOfFromLocation = transport.GetStations(txtFromLocation.Text);
@@ -101,6 +102,7 @@ namespace SBB_Fahrplan
                      * if you already have "Luzern" it will stay "Luzern" */
                     string fromLocation = stationsOfFromLocation.StationList[0].Name;
                     string toLocation = stationsOfToLocation.StationList[0].Name;
+                    // catches JsonSerializableException if no coordinates were found for a given location
                     try
                     {
                         GUIResults formConnections = new GUIResults(fromLocation, toLocation, dateTimePicker.Text);
@@ -121,19 +123,19 @@ namespace SBB_Fahrplan
         private bool SearchConnectionErrors(Stations stationsOfFromLocation, Stations stationsOfToLocation)
         {
             bool hasErrors = false;
-            //if no from location was found show error message
+            // if no from location was found show error message
             if (stationsOfFromLocation.StationList.Count() == 0)
             {
                 lblErrorMessage.Visible = true;
                 lblErrorMessage.Text = "Es wurde keine Abfahrtstation mit dem Namen " + txtFromLocation.Text + " gefunden";
                 hasErrors = true;
             }
-            //if no to location was found show error message
+            // if no to location was found show error message
             if (stationsOfToLocation.StationList.Count() == 0)
             {
                 lblErrorMessage.Visible = true;
                 string toLocationError = "Es wurde keine Ankunftstation mit dem Namen " + txtToLocation.Text + " gefunden";              
-                //if both locations were not found show both error messages on seperate lines
+                // if both locations were not found show both error messages on seperate lines
                 if (lblErrorMessage.Text != "")
                 {
                     lblErrorMessage.Text += Environment.NewLine + toLocationError;
@@ -168,7 +170,7 @@ namespace SBB_Fahrplan
                     }
                 }
             }
-            catch (JsonSerializationException)
+            catch (WebException)
             {
                 MessageBox.Show("Von der SBB Schnittstelle wurden keine Koordinaten zu diesem Ort gefunden.");
             }
