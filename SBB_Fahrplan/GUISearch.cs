@@ -1,4 +1,5 @@
-﻿using SwissTransport;
+﻿using Newtonsoft.Json;
+using SwissTransport;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -97,8 +98,15 @@ namespace SBB_Fahrplan
                  * if you already have "Luzern" it will stay "Luzern" */
                 string fromLocation = stationsOfFromLocation.StationList[0].Name;
                 string toLocation = stationsOfToLocation.StationList[0].Name;
-                GUIResults formConnections = new GUIResults(fromLocation, toLocation, dateTimePicker.Text);
-                formConnections.ShowDialog();
+                try
+                {
+                    GUIResults formConnections = new GUIResults(fromLocation, toLocation, dateTimePicker.Text);
+                    formConnections.ShowDialog();
+                }
+                catch(JsonSerializationException)
+                {
+                    MessageBox.Show("Von der SBB Schnittstelle wurden keine Koordinaten zu diesem Ort gefunden.");
+                }
             }
         }
 

@@ -8,8 +8,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwissTransportTest", "tests\SwissTransportTest\SwissTransportTest.csproj", "{959C6E54-5B1C-40F5-938A-C57B17451421}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{747F00C9-A37E-44CD-9B3E-F44A3593A3A7}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\OneDrive - sluz\Schule\M318\M318_Doku_Lino_Meyer_SBB_Fahrplan.docx = ..\..\..\..\OneDrive - sluz\Schule\M318\M318_Doku_Lino_Meyer_SBB_Fahrplan.docx
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBB_Fahrplan", "SBB_Fahrplan\SBB_Fahrplan.csproj", "{F4D87A66-CD6A-453A-9E50-4D1F2520FF6D}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup_SBB_Fahrplan", "Setup_SBB_Fahrplan\Setup_SBB_Fahrplan.vdproj", "{D32CD3F5-91CB-47F4-A804-F69EA2C67FC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +34,8 @@ Global
 		{F4D87A66-CD6A-453A-9E50-4D1F2520FF6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4D87A66-CD6A-453A-9E50-4D1F2520FF6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4D87A66-CD6A-453A-9E50-4D1F2520FF6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D32CD3F5-91CB-47F4-A804-F69EA2C67FC9}.Debug|Any CPU.ActiveCfg = Debug
+		{D32CD3F5-91CB-47F4-A804-F69EA2C67FC9}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

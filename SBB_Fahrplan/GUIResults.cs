@@ -79,20 +79,20 @@ namespace SBB_Fahrplan
 
         private void FillDataGridConnections()
         {
-            List<Connection> connectionList = connections.ConnectionList;
-            //Sets amountOfElements to the size of the list or if the list is bigger than 5 to 5
-            int amountOfElements = connectionList.Count < 5 ? connectionList.Count : 5;
-            dataGridConnections.Visible = true;
+                List<Connection> connectionList = connections.ConnectionList;
+                //Sets amountOfElements to the size of the list or if the list is bigger than 5 to 5
+                int amountOfElements = connectionList.Count < 5 ? connectionList.Count : 5;
+                dataGridConnections.Visible = true;
 
-            for (int i = 0; i < amountOfElements; i++)
-            {
-                //convert departure to datetime and cut off seconds with substring
-                string departureTime = Convert.ToDateTime(connectionList[i].From.Departure).ToString().Substring(0,16);
-                //cut off days and seconds with substring
-                string duration = connectionList[i].Duration.Substring(3, 5);
+                for (int i = 0; i < amountOfElements; i++)
+                {
+                    //convert departure to datetime and cut off seconds with substring
+                    string departureTime = Convert.ToDateTime(connectionList[i].From.Departure).ToString().Substring(0, 16);
+                    //cut off days and seconds with substring
+                    string duration = connectionList[i].Duration.Substring(3, 5);
 
-                dataGridConnections.Rows.Add(departureTime , connectionList[i].From.Station.Name, connectionList[i].To.Station.Name, connectionList[i].From.Platform, duration);
-            }
+                    dataGridConnections.Rows.Add(departureTime, connectionList[i].From.Station.Name, connectionList[i].To.Station.Name, connectionList[i].From.Platform, duration);
+                }
         }
 
         public Connections Connections

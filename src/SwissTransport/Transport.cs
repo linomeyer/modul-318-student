@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net;
+using System.Windows.Forms;
 using Newtonsoft.Json;
 
 namespace SwissTransport
@@ -19,7 +21,6 @@ namespace SwissTransport
                     , new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                 return stations;
             }
-
             return null;
         }
 
@@ -51,19 +52,19 @@ namespace SwissTransport
         /// <returns></returns>
         public Connections GetConnections(string fromStation, string toStattion, string date, string time)
         {
-            var request = CreateWebRequest("http://transport.opendata.ch/v1/connections?from=" + fromStation + "&to=" + toStattion + "&date=" + date + "&time=" + time);
-            var response = request.GetResponse();
-            var responseStream = response.GetResponseStream();
+                var request = CreateWebRequest("http://transport.opendata.ch/v1/connections?from=" + fromStation + "&to=" + toStattion + "&date=" + date + "&time=" + time);
+                var response = request.GetResponse();
+                var responseStream = response.GetResponseStream();
 
-            if (responseStream != null)
-            {
-                var readToEnd = new StreamReader(responseStream).ReadToEnd();
-                var connections =
-                    JsonConvert.DeserializeObject<Connections>(readToEnd);
-                return connections;
+                if (responseStream != null)
+                {
+                        var readToEnd = new StreamReader(responseStream).ReadToEnd();
+                        var connections =
+                            JsonConvert.DeserializeObject<Connections>(readToEnd);
+                        return connections;
             }
 
-            return null;
+                return null;
         }
 
         private static WebRequest CreateWebRequest(string url)
