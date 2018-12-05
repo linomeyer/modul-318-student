@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_0D3D2116146164F4112D98E3300CC62B"
+        "OwnerKey" = "8:_EA6A5D94608C4CEFA9A5F3580C089C45"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_178DC6BB063E04433B83BC819E5F4E7E"
         "OwnerKey" = "8:_EA6A5D94608C4CEFA9A5F3580C089C45"
         "MsmSig" = "8:_UNDEFINED"
@@ -28,7 +34,7 @@
         "Entry"
         {
         "MsmKey" = "8:_7279316C8E75D26E24868B8D06FC63D7"
-        "OwnerKey" = "8:_F27CFF4F261073B76719923DFE505FAC"
+        "OwnerKey" = "8:_0D3D2116146164F4112D98E3300CC62B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -45,18 +51,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F27CFF4F261073B76719923DFE505FAC"
-        "OwnerKey" = "8:_EA6A5D94608C4CEFA9A5F3580C089C45"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_178DC6BB063E04433B83BC819E5F4E7E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_EA6A5D94608C4CEFA9A5F3580C089C45"
         "MsmSig" = "8:_UNDEFINED"
@@ -64,13 +58,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F27CFF4F261073B76719923DFE505FAC"
+        "OwnerKey" = "8:_0D3D2116146164F4112D98E3300CC62B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_7279316C8E75D26E24868B8D06FC63D7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_178DC6BB063E04433B83BC819E5F4E7E"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -91,6 +91,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -107,6 +115,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -136,6 +160,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0D3D2116146164F4112D98E3300CC62B"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:SwissTransport, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_0D3D2116146164F4112D98E3300CC62B"
+                    {
+                    "Name" = "8:SwissTransport.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:SwissTransport.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_85213B8050F34F679C80F228B658C8DE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_178DC6BB063E04433B83BC819E5F4E7E"
             {
             "AssemblyRegister" = "3:1"
@@ -218,37 +273,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F27CFF4F261073B76719923DFE505FAC"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SwissTransport, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_F27CFF4F261073B76719923DFE505FAC"
-                    {
-                    "Name" = "8:SwissTransport.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:SwissTransport.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_85213B8050F34F679C80F228B658C8DE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
         }
         "FileType"
         {
@@ -317,7 +341,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Setup_SBB_Fahrplan"
         "ProductCode" = "8:{839B42D8-4C7D-45BE-BBA4-F89C3132EDB6}"
-        "PackageCode" = "8:{7980EFDC-C5F9-48C7-9B16-2BFCB7C763FB}"
+        "PackageCode" = "8:{59D2E714-D979-4FDA-B894-24C38F3F1970}"
         "UpgradeCode" = "8:{D4EE0DBF-3D8A-40F0-89F0-F21512507BC8}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
