@@ -146,9 +146,16 @@ namespace SBB_Fahrplan
 
             if(!hasErrors)
             {
-                string timetableLocation = stationsOfTimetableLocation.StationList[0].Name;
-                GUIResults formTimetable = new GUIResults(timetableLocation);
-                formTimetable.ShowDialog();
+                try
+                {
+                    string timetableLocation = stationsOfTimetableLocation.StationList[0].Name;
+                    GUIResults formTimetable = new GUIResults(timetableLocation);
+                    formTimetable.ShowDialog();
+                }
+                catch(JsonSerializationException)
+                {
+                    MessageBox.Show("Von der SBB Schnittstelle wurden keine Koordinaten zu diesem Ort gefunden.");
+                }
             }
         }
 
