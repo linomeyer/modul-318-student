@@ -11,16 +11,15 @@ namespace SwissTransport
         public Stations GetStations(string query)
         {
             var request = CreateWebRequest("http://transport.opendata.ch/v1/locations?query=" + query);
-            var response = request.GetResponse();
-            var responseStream = response.GetResponseStream();
-
-            if (responseStream != null)
-            {
-                var message = new StreamReader(responseStream).ReadToEnd();
-                var stations = JsonConvert.DeserializeObject<Stations>(message
-                    , new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
-                return stations;
-            }
+                var response = request.GetResponse();
+                var responseStream = response.GetResponseStream();
+                if (responseStream != null)
+                {
+                    var message = new StreamReader(responseStream).ReadToEnd();
+                    var stations = JsonConvert.DeserializeObject<Stations>(message
+                        , new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                    return stations;
+                }
             return null;
         }
 

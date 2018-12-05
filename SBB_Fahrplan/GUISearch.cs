@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -86,27 +87,34 @@ namespace SBB_Fahrplan
 
         private void BtnSearchConnection_Click(object sender, EventArgs e)
         {
-            Stations stationsOfFromLocation = transport.GetStations(txtFromLocation.Text);
-            Stations stationsOfToLocation = transport.GetStations(txtToLocation.Text);
-
-            bool hasErrors = SearchConnectionErrors(stationsOfFromLocation, stationsOfToLocation);
-
-             if(!hasErrors)
+            try
             {
-                /* StationList[0] is alway the most likely location or if you already have a valid location it will be that
-                 * this way if you for example have a to location with value "lu" it will automatically be turned into "Luzern"
-                 * if you already have "Luzern" it will stay "Luzern" */
-                string fromLocation = stationsOfFromLocation.StationList[0].Name;
-                string toLocation = stationsOfToLocation.StationList[0].Name;
-                try
+                Stations stationsOfFromLocation = transport.GetStations(txtFromLocation.Text);
+                Stations stationsOfToLocation = transport.GetStations(txtToLocation.Text);
+
+                bool hasErrors = SearchConnectionErrors(stationsOfFromLocation, stationsOfToLocation);
+
+                if (!hasErrors)
                 {
-                    GUIResults formConnections = new GUIResults(fromLocation, toLocation, dateTimePicker.Text);
-                    formConnections.ShowDialog();
+                    /* StationList[0] is alway the most likely location or if you already have a valid location it will be that
+                     * this way if you for example have a to location with value "lu" it will automatically be turned into "Luzern"
+                     * if you already have "Luzern" it will stay "Luzern" */
+                    string fromLocation = stationsOfFromLocation.StationList[0].Name;
+                    string toLocation = stationsOfToLocation.StationList[0].Name;
+                    try
+                    {
+                        GUIResults formConnections = new GUIResults(fromLocation, toLocation, dateTimePicker.Text);
+                        formConnections.ShowDialog();
+                    }
+                    catch (JsonSerializationException)
+                    {
+                        MessageBox.Show("Von der SBB Schnittstelle wurden keine Koordinaten zu diesem Ort gefunden.");
+                    }
                 }
-                catch(JsonSerializationException)
-                {
-                    MessageBox.Show("Von der SBB Schnittstelle wurden keine Koordinaten zu diesem Ort gefunden.");
-                }
+            }
+            catch(WebException)
+            {
+                MessageBox.Show("Sie benötigen eine funktionierende Internetverbindung.");
             }
         }
 
@@ -141,21 +149,28 @@ namespace SBB_Fahrplan
 
         private void BtnCreateTimetable_Click(object sender, EventArgs e)
         {
-            Stations stationsOfTimetableLocation = transport.GetStations(txtTimetableLocation.Text);
-            bool hasErrors = SearchTimetableErrors(stationsOfTimetableLocation);
-
-            if(!hasErrors)
+            try
             {
-                try
+                Stations stationsOfTimetableLocation = transport.GetStations(txtTimetableLocation.Text);
+                bool hasErrors = SearchTimetableErrors(stationsOfTimetableLocation);
+
+                if (!hasErrors)
                 {
-                    string timetableLocation = stationsOfTimetableLocation.StationList[0].Name;
-                    GUIResults formTimetable = new GUIResults(timetableLocation);
-                    formTimetable.ShowDialog();
+                    try
+                    {
+                        string timetableLocation = stationsOfTimetableLocation.StationList[0].Name;
+                        GUIResults formTimetable = new GUIResults(timetableLocation);
+                        formTimetable.ShowDialog();
+                    }
+                    catch (JsonSerializationException)
+                    {
+                        MessageBox.Show("Von der SBB Schnittstelle wurden keine Koordinaten zu diesem Ort gefunden.");
+                    }
                 }
-                catch(JsonSerializationException)
-                {
-                    MessageBox.Show("Von der SBB Schnittstelle wurden keine Koordinaten zu diesem Ort gefunden.");
-                }
+            }
+            catch (JsonSerializationException)
+            {
+                MessageBox.Show("Von der SBB Schnittstelle wurden keine Koordinaten zu diesem Ort gefunden.");
             }
         }
 
