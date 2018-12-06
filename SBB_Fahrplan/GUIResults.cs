@@ -108,5 +108,15 @@ namespace SBB_Fahrplan
             dataGridTimetable.Rows.Clear();
             this.Close();
         }
+
+        private void DataGrid_DoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dataGridView = sender as DataGridView;
+            int index = dataGridView.CurrentCell.RowIndex;
+            string fromStation = dataGridView.Rows[index].Cells[1].Value.ToString();
+            string toStation = dataGridView.Rows[index].Cells[2].Value.ToString();
+
+            transport.OpenConnectionInMaps(fromStation, toStation);
+        }
     }
 }

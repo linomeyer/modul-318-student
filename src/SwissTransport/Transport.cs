@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Windows.Forms;
@@ -66,6 +67,21 @@ namespace SwissTransport
                 return null;
         }
 
+        /// <summary>
+        /// Opens connection between from and to station in google maps
+        /// </summary>
+        /// <param name="fromStation"></param>
+        /// <param name="toStation"></param>
+        public void OpenConnectionInMaps(string fromStation, string toStation)
+        {
+            string fromStationInURLFormat = fromStation.Replace(' ', '+');
+            string toStationInURLFormat = toStation.Replace(' ', '+');
+
+            string url = "https://www.google.com/maps/dir/?api=1&origin=" + fromStationInURLFormat + "&destination=" + toStationInURLFormat;
+
+            Process.Start(url);
+        }
+
         private static WebRequest CreateWebRequest(string url)
         {
             var request = WebRequest.Create(url);
@@ -73,7 +89,6 @@ namespace SwissTransport
 
             webProxy.Credentials = CredentialCache.DefaultNetworkCredentials;
             request.Proxy = webProxy;
-            
             return request;
         }
     }

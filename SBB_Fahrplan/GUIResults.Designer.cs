@@ -54,10 +54,9 @@
             // 
             this.lblFromLocation.AutoSize = true;
             this.lblFromLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.lblFromLocation.Location = new System.Drawing.Point(22, 53);
-            this.lblFromLocation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFromLocation.Location = new System.Drawing.Point(16, 43);
             this.lblFromLocation.Name = "lblFromLocation";
-            this.lblFromLocation.Size = new System.Drawing.Size(47, 25);
+            this.lblFromLocation.Size = new System.Drawing.Size(37, 20);
             this.lblFromLocation.TabIndex = 0;
             this.lblFromLocation.Text = "von";
             this.lblFromLocation.Visible = false;
@@ -66,10 +65,9 @@
             // 
             this.lblToLocation.AutoSize = true;
             this.lblToLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.lblToLocation.Location = new System.Drawing.Point(385, 53);
-            this.lblToLocation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblToLocation.Location = new System.Drawing.Point(289, 43);
             this.lblToLocation.Name = "lblToLocation";
-            this.lblToLocation.Size = new System.Drawing.Size(40, 25);
+            this.lblToLocation.Size = new System.Drawing.Size(32, 20);
             this.lblToLocation.TabIndex = 1;
             this.lblToLocation.Text = "bis";
             this.lblToLocation.Visible = false;
@@ -77,19 +75,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 107);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(18, 87);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 17);
+            this.label3.Size = new System.Drawing.Size(73, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Verbindungen";
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(765, 486);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancel.Location = new System.Drawing.Point(574, 395);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(120, 34);
+            this.btnCancel.Size = new System.Drawing.Size(90, 28);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Abbrechen";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -106,49 +102,56 @@
             this.clmnToLocation,
             this.clmnPlatform,
             this.clmnDuration});
-            this.dataGridConnections.Location = new System.Drawing.Point(27, 128);
+            this.dataGridConnections.Location = new System.Drawing.Point(20, 104);
+            this.dataGridConnections.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridConnections.Name = "dataGridConnections";
+            this.dataGridConnections.ReadOnly = true;
             this.dataGridConnections.RowTemplate.Height = 24;
-            this.dataGridConnections.Size = new System.Drawing.Size(858, 351);
+            this.dataGridConnections.Size = new System.Drawing.Size(644, 285);
             this.dataGridConnections.TabIndex = 5;
             this.dataGridConnections.Visible = false;
+            this.dataGridConnections.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_DoubleClick);
             // 
             // clmnDeparture
             // 
             this.clmnDeparture.HeaderText = "Abfahrt";
             this.clmnDeparture.Name = "clmnDeparture";
+            this.clmnDeparture.ReadOnly = true;
             this.clmnDeparture.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // clmnFromLocation
             // 
             this.clmnFromLocation.HeaderText = "Von";
             this.clmnFromLocation.Name = "clmnFromLocation";
+            this.clmnFromLocation.ReadOnly = true;
             this.clmnFromLocation.Width = 150;
             // 
             // clmnToLocation
             // 
             this.clmnToLocation.HeaderText = "Nach";
             this.clmnToLocation.Name = "clmnToLocation";
+            this.clmnToLocation.ReadOnly = true;
             this.clmnToLocation.Width = 150;
             // 
             // clmnPlatform
             // 
             this.clmnPlatform.HeaderText = "Gleis";
             this.clmnPlatform.Name = "clmnPlatform";
+            this.clmnPlatform.ReadOnly = true;
             // 
             // clmnDuration
             // 
             this.clmnDuration.HeaderText = "Dauer";
             this.clmnDuration.Name = "clmnDuration";
+            this.clmnDuration.ReadOnly = true;
             // 
             // lblTimeTableLocation
             // 
             this.lblTimeTableLocation.AutoSize = true;
             this.lblTimeTableLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.lblTimeTableLocation.Location = new System.Drawing.Point(27, 53);
-            this.lblTimeTableLocation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTimeTableLocation.Location = new System.Drawing.Point(20, 43);
             this.lblTimeTableLocation.Name = "lblTimeTableLocation";
-            this.lblTimeTableLocation.Size = new System.Drawing.Size(42, 25);
+            this.lblTimeTableLocation.Size = new System.Drawing.Size(34, 20);
             this.lblTimeTableLocation.TabIndex = 6;
             this.lblTimeTableLocation.Text = "Ort";
             this.lblTimeTableLocation.Visible = false;
@@ -164,17 +167,21 @@
             this.dataGridViewTextBoxColumn3,
             this.clmnTrain,
             this.clmnLin});
-            this.dataGridTimetable.Location = new System.Drawing.Point(27, 128);
+            this.dataGridTimetable.Location = new System.Drawing.Point(20, 104);
+            this.dataGridTimetable.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridTimetable.Name = "dataGridTimetable";
+            this.dataGridTimetable.ReadOnly = true;
             this.dataGridTimetable.RowTemplate.Height = 24;
-            this.dataGridTimetable.Size = new System.Drawing.Size(858, 351);
+            this.dataGridTimetable.Size = new System.Drawing.Size(644, 285);
             this.dataGridTimetable.TabIndex = 7;
             this.dataGridTimetable.Visible = false;
+            this.dataGridTimetable.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_DoubleClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Abfahrt";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn1.Width = 110;
             // 
@@ -182,30 +189,34 @@
             // 
             this.dataGridViewTextBoxColumn2.HeaderText = "Von";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Width = 150;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.HeaderText = "Nach";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Width = 150;
             // 
             // clmnTrain
             // 
             this.clmnTrain.HeaderText = "Bahn";
             this.clmnTrain.Name = "clmnTrain";
+            this.clmnTrain.ReadOnly = true;
             this.clmnTrain.Width = 70;
             // 
             // clmnLin
             // 
             this.clmnLin.HeaderText = "Linie";
             this.clmnLin.Name = "clmnLin";
+            this.clmnLin.ReadOnly = true;
             // 
             // GUIResults
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(901, 533);
+            this.ClientSize = new System.Drawing.Size(676, 433);
             this.Controls.Add(this.dataGridTimetable);
             this.Controls.Add(this.lblTimeTableLocation);
             this.Controls.Add(this.dataGridConnections);
@@ -214,7 +225,6 @@
             this.Controls.Add(this.lblToLocation);
             this.Controls.Add(this.lblFromLocation);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GUIResults";
             this.Text = "Verbindungen";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridConnections)).EndInit();
