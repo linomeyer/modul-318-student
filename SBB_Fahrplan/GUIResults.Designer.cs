@@ -34,11 +34,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dataGridConnections = new System.Windows.Forms.DataGridView();
-            this.clmnDeparture = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnFromLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnToLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnPlatform = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblTimeTableLocation = new System.Windows.Forms.Label();
             this.dataGridTimetable = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +41,12 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmnTrain = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmnLin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.clmnDeparture = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmnFromLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmnToLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmnPlatform = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmnDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridConnections)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTimetable)).BeginInit();
             this.SuspendLayout();
@@ -110,40 +111,7 @@
             this.dataGridConnections.Size = new System.Drawing.Size(644, 285);
             this.dataGridConnections.TabIndex = 5;
             this.dataGridConnections.Visible = false;
-            this.dataGridConnections.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_DoubleClick);
-            // 
-            // clmnDeparture
-            // 
-            this.clmnDeparture.HeaderText = "Abfahrt";
-            this.clmnDeparture.Name = "clmnDeparture";
-            this.clmnDeparture.ReadOnly = true;
-            this.clmnDeparture.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // clmnFromLocation
-            // 
-            this.clmnFromLocation.HeaderText = "Von";
-            this.clmnFromLocation.Name = "clmnFromLocation";
-            this.clmnFromLocation.ReadOnly = true;
-            this.clmnFromLocation.Width = 150;
-            // 
-            // clmnToLocation
-            // 
-            this.clmnToLocation.HeaderText = "Nach";
-            this.clmnToLocation.Name = "clmnToLocation";
-            this.clmnToLocation.ReadOnly = true;
-            this.clmnToLocation.Width = 150;
-            // 
-            // clmnPlatform
-            // 
-            this.clmnPlatform.HeaderText = "Gleis";
-            this.clmnPlatform.Name = "clmnPlatform";
-            this.clmnPlatform.ReadOnly = true;
-            // 
-            // clmnDuration
-            // 
-            this.clmnDuration.HeaderText = "Dauer";
-            this.clmnDuration.Name = "clmnDuration";
-            this.clmnDuration.ReadOnly = true;
+            this.dataGridConnections.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_DoubleClick);
             // 
             // lblTimeTableLocation
             // 
@@ -175,7 +143,7 @@
             this.dataGridTimetable.Size = new System.Drawing.Size(644, 285);
             this.dataGridTimetable.TabIndex = 7;
             this.dataGridTimetable.Visible = false;
-            this.dataGridTimetable.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_DoubleClick);
+            this.dataGridTimetable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_DoubleClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -212,11 +180,57 @@
             this.clmnLin.Name = "clmnLin";
             this.clmnLin.ReadOnly = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.Location = new System.Drawing.Point(21, 395);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(314, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "*Doppelklick auf Linie um Verbindung auf Google Maps zu sehen";
+            // 
+            // clmnDeparture
+            // 
+            this.clmnDeparture.HeaderText = "Abfahrt";
+            this.clmnDeparture.Name = "clmnDeparture";
+            this.clmnDeparture.ReadOnly = true;
+            this.clmnDeparture.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmnDeparture.Width = 150;
+            // 
+            // clmnFromLocation
+            // 
+            this.clmnFromLocation.HeaderText = "Von";
+            this.clmnFromLocation.Name = "clmnFromLocation";
+            this.clmnFromLocation.ReadOnly = true;
+            this.clmnFromLocation.Width = 150;
+            // 
+            // clmnToLocation
+            // 
+            this.clmnToLocation.HeaderText = "Nach";
+            this.clmnToLocation.Name = "clmnToLocation";
+            this.clmnToLocation.ReadOnly = true;
+            this.clmnToLocation.Width = 150;
+            // 
+            // clmnPlatform
+            // 
+            this.clmnPlatform.HeaderText = "Gleis";
+            this.clmnPlatform.Name = "clmnPlatform";
+            this.clmnPlatform.ReadOnly = true;
+            this.clmnPlatform.Width = 50;
+            // 
+            // clmnDuration
+            // 
+            this.clmnDuration.HeaderText = "Dauer";
+            this.clmnDuration.Name = "clmnDuration";
+            this.clmnDuration.ReadOnly = true;
+            // 
             // GUIResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(676, 433);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridTimetable);
             this.Controls.Add(this.lblTimeTableLocation);
             this.Controls.Add(this.dataGridConnections);
@@ -241,11 +255,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DataGridView dataGridConnections;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmnDeparture;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmnFromLocation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmnToLocation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmnPlatform;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmnDuration;
         private System.Windows.Forms.Label lblTimeTableLocation;
         private System.Windows.Forms.DataGridView dataGridTimetable;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -253,5 +262,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmnTrain;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmnLin;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmnDeparture;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmnFromLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmnToLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmnPlatform;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmnDuration;
     }
 }

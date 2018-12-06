@@ -38,6 +38,6 @@ namespace SwissTransport
 
         public string Platform { get; set; }
 
-        public string RealtimeAvailability { get; set; }
+        public Prognosis Prognosis { get; set; }
     }
 }
